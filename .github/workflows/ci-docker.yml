@@ -15,7 +15,7 @@ jobs:
               run : docker login -u tanhuy123 -p ${{secrets.PASS_DOCKER}}
 
             - name : Build image mới
-              run : docker build tanhuy123/image-be_cyber_media:latest .
+              run : docker build -t tanhuy123/image-be_cyber_media:latest .
 
             - name : Push image lên docker hub
               run : docker push tanhuy123/image-be_cyber_media:lates
