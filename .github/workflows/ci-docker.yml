@@ -1,0 +1,21 @@
+name: CI-DOCKER 
+
+on: 
+    push:
+        branches: ["main"]
+
+jobs:
+    build:
+        runs-on: unbutu-latest
+
+        steps: 
+            - uses: actions/checkout@v4
+
+            - name : Đăng nhập vào docker hub
+              run : docker login -u tanhuy123 -p ${{secrets.PASS_DOCKER}}
+
+            - name : Build image mới
+              run : docker build tanhuy123/image-be_cyber_media:latest .
+
+            - name : Push image lên docker hub
+              run : docker push tanhuy123/image-be_cyber_media:lates
